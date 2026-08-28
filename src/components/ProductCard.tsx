@@ -33,12 +33,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
             initial={{ x: '-100%', rotate: -45 }}
             animate={{ x: 0, rotate: -45 }}
             transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-            className="absolute left-[-42px] top-[14px] w-[150px] bg-sale py-1.5 text-center leading-tight text-sale-foreground shadow-[0_2px_6px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/30"
+            className="absolute left-[-42px] top-[18px] w-[150px] whitespace-nowrap bg-sale py-1 text-center text-[11px] font-extrabold uppercase tracking-wider text-sale-foreground shadow-[0_2px_6px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/30"
           >
-            <span className="block text-[9px] font-bold uppercase tracking-widest">Solde</span>
-            {discountPercent && discountPercent > 0 && (
-              <span className="block text-[13px] font-black">-{discountPercent}%</span>
-            )}
+            {discountPercent && discountPercent > 0 ? `Solde -${discountPercent}%` : 'Solde'}
           </motion.div>
         )}
         <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
