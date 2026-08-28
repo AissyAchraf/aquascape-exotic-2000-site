@@ -62,8 +62,8 @@ export const products: Product[] = [
     categoryId: 'cat-1',
     subcategoryId: 'sub-3',
     variants: [
-      { id: 'v1', name: '60x30x36cm', size: '60P', image: '/placeholder.svg', price: 129, inStock: true },
-      { id: 'v2', name: '60x30x45cm', size: '60H', image: '/placeholder.svg', price: 149, inStock: true },
+      { id: 'v1', name: '60x30x36cm', size: '60P', image: '/placeholder.svg', price: 129, onSale: false, inStock: true },
+      { id: 'v2', name: '60x30x45cm', size: '60H', image: '/placeholder.svg', price: 149, onSale: false, inStock: true },
     ],
     characteristics: { Glass: '6mm Ultra-Clear', Volume: '60L', Dimensions: '60x30x36cm', Silicon: 'Black' },
     images: ['/placeholder.svg', '/placeholder.svg'],
@@ -79,9 +79,9 @@ export const products: Product[] = [
     categoryId: 'cat-2',
     subcategoryId: 'sub-4',
     variants: [
-      { id: 'v3', name: '5kg Set', size: '5kg', image: '/placeholder.svg', price: 45, inStock: true },
-      { id: 'v4', name: '10kg Set', size: '10kg', image: '/placeholder.svg', price: 79, inStock: true },
-      { id: 'v5', name: '15kg Set', size: '15kg', image: '/placeholder.svg', price: 110, originalPrice: 135, inStock: true },
+      { id: 'v3', name: '5kg Set', size: '5kg', image: '/placeholder.svg', price: 45, onSale: false, inStock: true },
+      { id: 'v4', name: '10kg Set', size: '10kg', image: '/placeholder.svg', price: 79, onSale: false, inStock: true },
+      { id: 'v5', name: '15kg Set', size: '15kg', image: '/placeholder.svg', price: 110, originalPrice: 135, onSale: true, inStock: true },
     ],
     characteristics: { Type: 'Seiryu', Origin: 'Natural', 'pH Impact': 'Slightly raises pH', Use: 'Iwagumi, Nature style' },
     images: ['/placeholder.svg', '/placeholder.svg'],
@@ -98,9 +98,9 @@ export const products: Product[] = [
     categoryId: 'cat-2',
     subcategoryId: 'sub-5',
     variants: [
-      { id: 'v6', name: 'Medium (25-35cm)', size: 'M', image: '/placeholder.svg', price: 32, inStock: true },
-      { id: 'v7', name: 'Large (35-50cm)', size: 'L', image: '/placeholder.svg', price: 55, inStock: true },
-      { id: 'v8', name: 'XL (50-70cm)', size: 'XL', image: '/placeholder.svg', price: 85, inStock: false },
+      { id: 'v6', name: 'Medium (25-35cm)', size: 'M', image: '/placeholder.svg', price: 32, onSale: false, inStock: true },
+      { id: 'v7', name: 'Large (35-50cm)', size: 'L', image: '/placeholder.svg', price: 55, onSale: false, inStock: true },
+      { id: 'v8', name: 'XL (50-70cm)', size: 'XL', image: '/placeholder.svg', price: 85, onSale: false, inStock: false },
     ],
     characteristics: { Type: 'Spider Wood', Preparation: 'Pre-soaked', Tannins: 'Minimal', Safe: 'Shrimp & Fish safe' },
     images: ['/placeholder.svg', '/placeholder.svg'],
@@ -115,8 +115,8 @@ export const products: Product[] = [
     categoryId: 'cat-3',
     subcategoryId: 'sub-7',
     variants: [
-      { id: 'v9', name: '1 Cup', size: '1 cup', image: '/placeholder.svg', price: 12, inStock: true },
-      { id: 'v10', name: '3 Cup Bundle', size: '3 cups', image: '/placeholder.svg', price: 30, originalPrice: 36, inStock: true },
+      { id: 'v9', name: '1 Cup', size: '1 cup', image: '/placeholder.svg', price: 12, onSale: false, inStock: true },
+      { id: 'v10', name: '3 Cup Bundle', size: '3 cups', image: '/placeholder.svg', price: 30, originalPrice: 36, onSale: true, inStock: true },
     ],
     characteristics: { Type: 'Carpeting', Difficulty: 'Medium', Light: 'Medium-High', CO2: 'Recommended', Growth: 'Moderate' },
     images: ['/placeholder.svg'],
@@ -133,8 +133,8 @@ export const products: Product[] = [
     categoryId: 'cat-3',
     subcategoryId: 'sub-8',
     variants: [
-      { id: 'v11', name: 'Small Portion', size: 'S', image: '/placeholder.svg', price: 18, inStock: true },
-      { id: 'v12', name: 'Large Portion', size: 'L', image: '/placeholder.svg', price: 32, inStock: false },
+      { id: 'v11', name: 'Small Portion', size: 'S', image: '/placeholder.svg', price: 18, onSale: false, inStock: true },
+      { id: 'v12', name: 'Large Portion', size: 'L', image: '/placeholder.svg', price: 32, onSale: false, inStock: false },
     ],
     characteristics: { Type: 'Epiphyte', Difficulty: 'Easy', Light: 'Low-Medium', CO2: 'Not required', Growth: 'Slow' },
     images: ['/placeholder.svg'],
@@ -149,8 +149,8 @@ export const products: Product[] = [
     categoryId: 'cat-4',
     subcategoryId: 'sub-12',
     variants: [
-      { id: 'v13', name: '60cm', size: '60cm', image: '/placeholder.svg', price: 189, inStock: true },
-      { id: 'v14', name: '90cm', size: '90cm', image: '/placeholder.svg', price: 259, inStock: true },
+      { id: 'v13', name: '60cm', size: '60cm', image: '/placeholder.svg', price: 189, onSale: false, inStock: true },
+      { id: 'v14', name: '90cm', size: '90cm', image: '/placeholder.svg', price: 259, onSale: false, inStock: true },
     ],
     characteristics: { Spectrum: 'Full RGB', Power: '45W', Adjustable: 'Yes', Material: 'Aluminum', Warranty: '2 years' },
     images: ['/placeholder.svg', '/placeholder.svg'],
@@ -166,8 +166,8 @@ export const products: Product[] = [
     categoryId: 'cat-4',
     subcategoryId: 'sub-13',
     variants: [
-      { id: 'v15', name: 'With 2L Cylinder', size: '2L', image: '/placeholder.svg', price: 220, originalPrice: 280, inStock: true },
-      { id: 'v16', name: 'With 5L Cylinder', size: '5L', image: '/placeholder.svg', price: 290, originalPrice: 350, inStock: true },
+      { id: 'v15', name: 'With 2L Cylinder', size: '2L', image: '/placeholder.svg', price: 220, originalPrice: 280, onSale: true, inStock: true },
+      { id: 'v16', name: 'With 5L Cylinder', size: '5L', image: '/placeholder.svg', price: 290, originalPrice: 350, onSale: true, inStock: true },
     ],
     characteristics: { Regulator: 'Dual-stage', Solenoid: 'Included', Diffuser: 'Ceramic inline', Tubing: '3m included' },
     images: ['/placeholder.svg', '/placeholder.svg'],
@@ -183,9 +183,9 @@ export const products: Product[] = [
     categoryId: 'cat-2',
     subcategoryId: 'sub-6',
     variants: [
-      { id: 'v17', name: '3L Bag', size: '3L', image: '/placeholder.svg', price: 25, inStock: true },
-      { id: 'v18', name: '9L Bag', size: '9L', image: '/placeholder.svg', price: 55, inStock: true },
-      { id: 'v19', name: '9L Bag (Powder)', size: '9L Powder', image: '/placeholder.svg', price: 58, inStock: true },
+      { id: 'v17', name: '3L Bag', size: '3L', image: '/placeholder.svg', price: 25, onSale: false, inStock: true },
+      { id: 'v18', name: '9L Bag', size: '9L', image: '/placeholder.svg', price: 55, onSale: false, inStock: true },
+      { id: 'v19', name: '9L Bag (Powder)', size: '9L Powder', image: '/placeholder.svg', price: 58, onSale: false, inStock: true },
     ],
     characteristics: { Type: 'Active substrate', 'pH Effect': 'Lowers pH', Nutrients: 'Rich in organics', Color: 'Black', Granule: 'Normal / Powder' },
     images: ['/placeholder.svg'],
@@ -233,11 +233,15 @@ export function isProductAvailable(product: Product): boolean {
   return product.variants.some(v => v.inStock);
 }
 
+function getDisplayVariant(product: Product) {
+  return product.variants.reduce((cheapest, v) => (v.price < cheapest.price ? v : cheapest));
+}
+
 export function getMinPrice(product: Product): number {
-  return Math.min(...product.variants.map(v => v.price));
+  return getDisplayVariant(product).price;
 }
 
 export function getOriginalPrice(product: Product): number | undefined {
-  const orig = product.variants.find(v => v.originalPrice);
-  return orig?.originalPrice;
+  const variant = getDisplayVariant(product);
+  return variant.onSale ? variant.originalPrice ?? undefined : undefined;
 }
