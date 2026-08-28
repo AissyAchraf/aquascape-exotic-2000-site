@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { isProductAvailable, getMinPrice, getOriginalPrice } from '@/data/catalog';
 import { Product } from '@/data/types';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +12,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const available = isProductAvailable(product);
   const price = getMinPrice(product);
   const originalPrice = getOriginalPrice(product);
+  const discountPercent = originalPrice
+    ? Math.round((1 - price / originalPrice) * 100)
+    : undefined;
 
   return (
     <Link
@@ -31,9 +35,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </Badge>
           )}
           {product.isPromotion && available && (
-            <Badge className="bg-sale text-sale-foreground text-[10px] uppercase tracking-wider">
-              Sale
-            </Badge>
+            <motion.span
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="inline-flex items-center rounded-md bg-gradient-to-br from-sale to-sale/85 px-2 py-1 text-[11px] font-extrabold uppercase tracking-wide text-sale-foreground shadow-md ring-1 ring-white/25"
+            >
+              {discountPercent && discountPercent > 0 ? `-${discountPercent}%` : 'Sale'}
+            </motion.span>
           )}
           {product.isBestSeller && available && (
             <Badge variant="outline" className="bg-background/80 text-foreground text-[10px] uppercase tracking-wider border-border">
