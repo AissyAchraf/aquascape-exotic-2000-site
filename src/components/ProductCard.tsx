@@ -28,21 +28,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute top-2 left-2 flex flex-col gap-1">
+        {product.isPromotion && available && (
+          <motion.div
+            initial={{ x: '-100%', rotate: -45 }}
+            animate={{ x: 0, rotate: -45 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+            className="absolute left-[-42px] top-[18px] w-[150px] bg-sale py-1 text-center text-[11px] font-extrabold uppercase tracking-wider text-sale-foreground shadow-[0_2px_6px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/30"
+          >
+            {discountPercent && discountPercent > 0 ? `-${discountPercent}%` : 'Sale'}
+          </motion.div>
+        )}
+        <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
           {!available && (
             <Badge variant="secondary" className="bg-unavailable text-unavailable-foreground text-[10px] uppercase tracking-wider">
               Sold Out
             </Badge>
-          )}
-          {product.isPromotion && available && (
-            <motion.span
-              initial={{ scale: 0.6, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="inline-flex items-center rounded-md bg-gradient-to-br from-sale to-sale/85 px-2 py-1 text-[11px] font-extrabold uppercase tracking-wide text-sale-foreground shadow-md ring-1 ring-white/25"
-            >
-              {discountPercent && discountPercent > 0 ? `-${discountPercent}%` : 'Sale'}
-            </motion.span>
           )}
           {product.isBestSeller && available && (
             <Badge variant="outline" className="bg-background/80 text-foreground text-[10px] uppercase tracking-wider border-border">
