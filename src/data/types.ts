@@ -20,7 +20,8 @@ export interface ProductVariant {
   size?: string;
   image: string;
   price: number;
-  originalPrice?: number;
+  originalPrice?: number | null;
+  onSale: boolean;
   inStock: boolean;
 }
 

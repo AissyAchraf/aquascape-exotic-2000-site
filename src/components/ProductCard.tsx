@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { isProductAvailable, getMinPrice, getOriginalPrice } from '@/data/catalog';
 import { Product } from '@/data/types';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +12,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const available = isProductAvailable(product);
   const price = getMinPrice(product);
   const originalPrice = getOriginalPrice(product);
+  const discountPercent = originalPrice
+    ? Math.round((1 - price / originalPrice) * 100)
+    : undefined;
 
   return (
     <Link
@@ -24,15 +28,20 @@ const ProductCard = ({ product }: ProductCardProps) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute top-2 left-2 flex flex-col gap-1">
+        {product.isPromotion && available && (
+          <motion.div
+            initial={{ x: '-100%', rotate: -45 }}
+            animate={{ x: 0, rotate: -45 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+            className="absolute left-[-42px] top-[18px] w-[150px] whitespace-nowrap bg-sale py-1 text-center text-[11px] font-extrabold uppercase tracking-wider text-sale-foreground shadow-[0_2px_6px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/30"
+          >
+            {discountPercent && discountPercent > 0 ? `Solde -${discountPercent}%` : 'Solde'}
+          </motion.div>
+        )}
+        <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
           {!available && (
             <Badge variant="secondary" className="bg-unavailable text-unavailable-foreground text-[10px] uppercase tracking-wider">
               Sold Out
-            </Badge>
-          )}
-          {product.isPromotion && available && (
-            <Badge className="bg-sale text-sale-foreground text-[10px] uppercase tracking-wider">
-              Sale
             </Badge>
           )}
           {product.isBestSeller && available && (

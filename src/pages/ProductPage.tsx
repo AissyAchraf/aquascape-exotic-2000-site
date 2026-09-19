@@ -125,7 +125,7 @@ const ProductPage = () => {
 
             <div className="flex items-center gap-3 mb-6">
               <span className="text-2xl font-medium text-foreground font-body">{variant.price.toFixed(2)}DH</span>
-              {variant.originalPrice && (
+              {variant.onSale && variant.originalPrice && (
                 <span className="text-lg text-muted-foreground line-through font-body">{variant.originalPrice.toFixed(2)}DH</span>
               )}
             </div>

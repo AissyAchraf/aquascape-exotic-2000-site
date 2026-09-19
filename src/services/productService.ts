@@ -10,7 +10,8 @@ interface ApiVariant {
   size?: string;
   image: string;
   price: number;
-  originalPrice?: number;
+  originalPrice?: number | null;
+  onSale: boolean;
   isAvailable: boolean;
 }
 
@@ -23,6 +24,7 @@ function mapVariant(v: ApiVariant): ProductVariant {
     image: v.image,
     price: v.price,
     originalPrice: v.originalPrice,
+    onSale: v.onSale,
     inStock: v.isAvailable,
   };
 }
