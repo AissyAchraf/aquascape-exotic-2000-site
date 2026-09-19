@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { useCategories } from '@/hooks/useCategories';
 import { useProductsByCategory, useProductsBySubcategory } from '@/hooks/useProducts';
 import ProductCard from '@/components/ProductCard';
@@ -15,7 +14,9 @@ import {
 
 const CategoryPage = () => {
   const { categorySlug, subcategorySlug } = useParams();
-  const [page, setPage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = parseInt(searchParams.get('page') ?? '1', 10);
+  const page = Number.isNaN(pageParam) ? 0 : Math.max(0, pageParam - 1);
   const { data: categories = [], isLoading: categoriesLoading } = useCategories();
   const category = categories.find(c => c.slug === categorySlug);
 
@@ -67,7 +68,15 @@ const CategoryPage = () => {
   }
 
   const handlePageChange = (newPage: number) => {
-    setPage(newPage);
+    setSearchParams(
+      prev => {
+        const next = new URLSearchParams(prev);
+        if (newPage > 0) next.set('page', String(newPage + 1));
+        else next.delete('page');
+        return next;
+      },
+      { replace: true }
+    );
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -106,7 +115,6 @@ const CategoryPage = () => {
               key={sub.id}
               to={`/category/${category.slug}/${sub.slug}`}
               className="px-4 py-1.5 text-xs font-medium tracking-wide bg-secondary text-secondary-foreground rounded-full hover:bg-primary hover:text-primary-foreground transition-colors font-body"
-              onClick={() => setPage(0)}
             >
               {sub.name}
             </Link>
